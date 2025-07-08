@@ -4,12 +4,7 @@ import pandas as pd
 import numpy as np
 import sys
 
-# === RUTAS ===
 INPUT_JSON = "criptos_predichas.json"
-OUTPUT_DIR = "/data"
-OUTPUT_RECOMENDACIONES = os.path.join(OUTPUT_DIR, "recomendaciones.json")
-
-os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 # === CARGAR DATOS ===
 def cargar_criptos():
@@ -66,7 +61,7 @@ def recomendar_portafolio(capital: float, riesgo: str, plazo: str, top_n: int = 
 
     candidatos = df[filtro].copy()
     if candidatos.empty:
-        print("No hay criptomonedas que cumplan los criterios.")
+        print("[]")
         return
 
     candidatos = candidatos.sort_values("score", ascending=False).head(top_n)
@@ -77,9 +72,7 @@ def recomendar_portafolio(capital: float, riesgo: str, plazo: str, top_n: int = 
     resumen = []
     x_range = list(range(puntos + 1))
 
-    print(f"\n=== RECOMENDACIÓN DE PORTAFOLIO ({riesgo.upper()}, {plazo.upper()}) ===\n")
-
-    for i, (_, row) in enumerate(candidatos.iterrows(), start=1):
+    for _, row in candidatos.iterrows():
         try:
             monto = row["monto_invertido"]
             precio = row["current_price"]
@@ -98,8 +91,7 @@ def recomendar_portafolio(capital: float, riesgo: str, plazo: str, top_n: int = 
                 crecimiento = [1] * len(x_range)
 
             proyeccion = [round(c * monto, 2) for c in crecimiento]
-        except Exception as e:
-            print(f"Error al procesar {row['symbol']}: {e}")
+        except Exception:
             continue
 
         resumen.append({
@@ -116,17 +108,8 @@ def recomendar_portafolio(capital: float, riesgo: str, plazo: str, top_n: int = 
             "proyeccion": proyeccion
         })
 
-        print(f"Crypto {i}: {row['name']} ({row['symbol'].upper()})")
-        print(f"    Precio actual: ${precio:.4f}")
-        print(f"    Unidades sugeridas: {unidades:.6f}")
-        print(f"    Inversión en USD: ${unidades * precio:.2f}")
-        print(f"    Score: {row['score']:.3f}")
-        print(f"    Motivo: {row.get('reason', '')}")
-        print(f"    Rendimiento anual estimado: {rendimiento_anual * 100:.2f}%\n")
-
-    with open(OUTPUT_RECOMENDACIONES, "w", encoding="utf-8") as f:
-        json.dump(resumen, f, indent=2, ensure_ascii=False)
-    print(f"Recomendaciones guardadas en: {OUTPUT_RECOMENDACIONES}")
+    # ✅ Imprimir el resultado como JSON en consola (stdout)
+    print(json.dumps(resumen, indent=2, ensure_ascii=False))
 
 # === EJECUCIÓN DESDE TERMINAL ===
 if __name__ == "__main__":
