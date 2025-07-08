@@ -14,8 +14,10 @@ def recomendar():
     if not capital or not riesgo or not plazo:
         return jsonify({'error': 'Faltan parámetros'}), 400
 
+    if not os.path.exists('criptos_predichas.json'):
+        return jsonify({'error': 'Falta el archivo criptos_predichas.json'}), 500
+
     try:
-        # Ejecutar el script con argumentos
         result = subprocess.run(
             ['python', 'modelo_portafolio.py', capital, riesgo, plazo],
             check=True,
@@ -23,22 +25,14 @@ def recomendar():
             text=True
         )
 
-        # Verificar que se generó el archivo de salida
-        if not os.path.exists('recomendaciones.json'):
-            return jsonify({'error': 'No se generó el archivo recomendaciones.json'}), 500
-
-        # Leer y devolver el contenido del archivo JSON
-        with open('recomendaciones.json', 'r') as f:
-            data = json.load(f)
-
+        data = json.loads(result.stdout)
         return jsonify({'recomendaciones': data})
 
     except subprocess.CalledProcessError as e:
-        return jsonify({'error': f'Error al ejecutar el script: {e.stderr}'}), 500
+        return jsonify({'error': f'Error ejecutando el script: {e.stderr}'}), 500
     except Exception as e:
         return jsonify({'error': f'Error inesperado: {str(e)}'}), 500
 
-# Ejecutar con puerto dinámico para Railway
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)
