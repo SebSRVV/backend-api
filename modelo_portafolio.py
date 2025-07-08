@@ -5,8 +5,8 @@ import numpy as np
 import sys
 
 # === RUTAS ===
-INPUT_JSON = "public/data/criptos_predichas.json"
-OUTPUT_DIR = "public/data"
+INPUT_JSON = "criptos_predichas.json"
+OUTPUT_DIR = "/data"
 OUTPUT_RECOMENDACIONES = os.path.join(OUTPUT_DIR, "recomendaciones.json")
 
 os.makedirs(OUTPUT_DIR, exist_ok=True)
@@ -138,7 +138,7 @@ if __name__ == "__main__":
             top_n = int(sys.argv[4]) if len(sys.argv) == 5 else 5
             recomendar_portafolio(capital, riesgo, plazo, top_n)
         except Exception as e:
-            print(f"❌ Error: {e}")
+            print(f"Error: {e}")
             print("Uso: python modelo_portafolio.py <capital> <riesgo> <plazo> [top_n]")
     else:
         print("Modo de uso:")
