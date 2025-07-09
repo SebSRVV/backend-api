@@ -133,8 +133,8 @@ def recomendar_portafolio(capital: float, riesgo: str, plazo: str, top_n: int = 
         print(f"  {r['symbol']}: {r['proyeccion'][-1]}")
         total_final += r['proyeccion'][-1]
     print(f"[DEBUG] Suma total proyectada: {total_final}")
+    print(json.dumps(resumen, indent=2, ensure_ascii=False))
 
-print(json.dumps(resumen, indent=2, ensure_ascii=False))
 # === EJECUCIÓN DESDE TERMINAL ===
 if __name__ == "__main__":
     if len(sys.argv) in (4, 5):
