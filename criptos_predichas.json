@@ -1,17 +1,17 @@
 [
   {
-    "name": "Bitcoin Cash",
-    "symbol": "bch",
-    "image": "https://coin-images.coingecko.com/coins/images/780/large/bitcoin-cash-circle.png?1696501932",
+    "name": "Sei",
+    "symbol": "sei",
+    "image": "https://coin-images.coingecko.com/coins/images/28205/large/Sei_Logo_-_Transparent.png?1696527207",
     "chart": "",
-    "market_cap": 9881388748,
-    "current_price": 496.75,
-    "price_change_24h": -1.710930269768452,
-    "price_change_7d": 0.8251629961846141,
-    "price_change_30d": 22.08120425105527,
-    "score": 0.6666666666666666,
+    "market_cap": 1508141022,
+    "current_price": 0.271398,
+    "price_change_24h": -4.643025306952283,
+    "price_change_7d": 4.678846462179042,
+    "price_change_30d": 34.02739822198766,
+    "score": 0.68,
     "predicted": true,
-    "reason": "Buena puntuacion en analisis multivariable"
+    "reason": "Buen rendimiento mensual (+30%) | Buena puntuacion en analisis multivariable"
   },
   {
     "name": "Pudgy Penguins",
@@ -23,9 +23,9 @@
     "price_change_24h": 0.39666445488107804,
     "price_change_7d": 66.42381749705554,
     "price_change_30d": 40.646019677015374,
-    "score": 0.4266666666666667,
+    "score": 0.8333333333333334,
     "predicted": true,
-    "reason": "Buen rendimiento mensual (+30%) | Fuerte tendencia semanal (+10%)"
+    "reason": "Buen rendimiento mensual (+30%) | Fuerte tendencia semanal (+10%) | Alta confianza del modelo"
   },
   {
     "name": "Venom",
@@ -37,23 +37,9 @@
     "price_change_24h": 0.543917997049713,
     "price_change_7d": 18.630820690169443,
     "price_change_30d": 66.6628647616337,
-    "score": 0.44,
+    "score": 0.86,
     "predicted": true,
-    "reason": "Crecimiento mensual sobresaliente (+60%) | Fuerte tendencia semanal (+10%)"
-  },
-  {
-    "name": "Trip",
-    "symbol": "trip",
-    "image": "https://coin-images.coingecko.com/coins/images/54717/large/IMG-20250120-184423-846.png?1741186152",
-    "chart": "",
-    "market_cap": 302850139,
-    "current_price": 10.27,
-    "price_change_24h": 0.120864477211491,
-    "price_change_7d": 1.899670295350242,
-    "price_change_30d": 26.225621272911148,
-    "score": 0.7733333333333333,
-    "predicted": true,
-    "reason": "Buena puntuacion en analisis multivariable"
+    "reason": "Crecimiento mensual sobresaliente (+60%) | Fuerte tendencia semanal (+10%) | Alta confianza del modelo"
   },
   {
     "name": "Useless Coin",
@@ -65,7 +51,7 @@
     "price_change_24h": -3.51762083626564,
     "price_change_7d": 79.88958298057243,
     "price_change_30d": 2525.5076477137086,
-    "score": 0.84,
+    "score": 0.9066666666666666,
     "predicted": true,
     "reason": "Explosion mensual (+100%) | Fuerte tendencia semanal (+10%) | Alta confianza del modelo"
   },
@@ -79,7 +65,7 @@
     "price_change_24h": 4.9094238278583155,
     "price_change_7d": 27.000716667803054,
     "price_change_30d": 29.82231551932909,
-    "score": 0.84,
+    "score": 0.82,
     "predicted": true,
     "reason": "Fuerte tendencia semanal (+10%) | Alta confianza del modelo"
   },
@@ -93,9 +79,9 @@
     "price_change_24h": -0.29810477188049,
     "price_change_7d": 4.753293726069501,
     "price_change_30d": 21.189615912788316,
-    "score": 0.4,
+    "score": 0.66,
     "predicted": true,
-    "reason": "Recomendacion por analisis multivariable"
+    "reason": "Buena puntuacion en analisis multivariable"
   },
   {
     "name": "Sologenic",
@@ -107,7 +93,7 @@
     "price_change_24h": 30.553731046298115,
     "price_change_7d": 53.027506925473425,
     "price_change_30d": 57.46227086244219,
-    "score": 0.8866666666666667,
+    "score": 0.92,
     "predicted": true,
     "reason": "Buen rendimiento mensual (+30%) | Fuerte tendencia semanal (+10%) | Alta confianza del modelo"
   },
@@ -121,7 +107,7 @@
     "price_change_24h": -4.285533828526153,
     "price_change_7d": 21.27925790625024,
     "price_change_30d": 159.2683749555226,
-    "score": 0.8666666666666667,
+    "score": 0.8333333333333334,
     "predicted": true,
     "reason": "Explosion mensual (+100%) | Fuerte tendencia semanal (+10%) | Alta confianza del modelo"
   },
@@ -135,7 +121,7 @@
     "price_change_24h": 9.035445356863391,
     "price_change_7d": 23.416196376101574,
     "price_change_30d": 37.21380388528376,
-    "score": 0.8266666666666667,
+    "score": 0.8533333333333334,
     "predicted": true,
     "reason": "Buen rendimiento mensual (+30%) | Fuerte tendencia semanal (+10%) | Alta confianza del modelo"
   },
@@ -149,7 +135,7 @@
     "price_change_24h": 0.8186967834672221,
     "price_change_7d": 22.382566337320036,
     "price_change_30d": 43.17450146034166,
-    "score": 0.8466666666666667,
+    "score": 0.8133333333333334,
     "predicted": true,
     "reason": "Buen rendimiento mensual (+30%) | Fuerte tendencia semanal (+10%) | Alta confianza del modelo"
   },
@@ -163,9 +149,9 @@
     "price_change_24h": -0.23523615467085401,
     "price_change_7d": 31.517841346497665,
     "price_change_30d": 266.4637033990667,
-    "score": 0.7866666666666666,
+    "score": 0.96,
     "predicted": true,
-    "reason": "Explosion mensual (+100%) | Fuerte tendencia semanal (+10%) | Buena puntuacion en analisis multivariable"
+    "reason": "Explosion mensual (+100%) | Fuerte tendencia semanal (+10%) | Alta confianza del modelo"
   },
   {
     "name": "Conscious Token",
@@ -177,23 +163,9 @@
     "price_change_24h": 1.9165337006580772,
     "price_change_7d": 9.447578592726991,
     "price_change_30d": 23.925163867219002,
-    "score": 0.88,
+    "score": 0.49333333333333335,
     "predicted": true,
-    "reason": "Tendencia semanal positiva | Alta confianza del modelo"
-  },
-  {
-    "name": "Non-Playable Coin",
-    "symbol": "npc",
-    "image": "https://coin-images.coingecko.com/coins/images/31193/large/NPC_200x200.png?1696530021",
-    "chart": "",
-    "market_cap": 121818399,
-    "current_price": 0.015120680000000001,
-    "price_change_24h": -2.466118163498936,
-    "price_change_7d": 0.449616546776388,
-    "price_change_30d": 19.18852432655161,
-    "score": 0.6266666666666667,
-    "predicted": true,
-    "reason": "Buena puntuacion en analisis multivariable"
+    "reason": "Tendencia semanal positiva"
   },
   {
     "name": "aura",
@@ -205,9 +177,9 @@
     "price_change_24h": -11.735922688970977,
     "price_change_7d": 14.365535931525466,
     "price_change_30d": 13701.958777989881,
-    "score": 0.7866666666666666,
+    "score": 0.54,
     "predicted": true,
-    "reason": "Explosion mensual (+100%) | Fuerte tendencia semanal (+10%) | Buena puntuacion en analisis multivariable"
+    "reason": "Explosion mensual (+100%) | Fuerte tendencia semanal (+10%)"
   },
   {
     "name": "RealLink",
@@ -219,7 +191,7 @@
     "price_change_24h": -1.359653863896551,
     "price_change_7d": 24.06744616934971,
     "price_change_30d": 64.51589806840326,
-    "score": 0.86,
+    "score": 0.8733333333333333,
     "predicted": true,
     "reason": "Crecimiento mensual sobresaliente (+60%) | Fuerte tendencia semanal (+10%) | Alta confianza del modelo"
   },
@@ -233,8 +205,50 @@
     "price_change_24h": 3.053352050176332,
     "price_change_7d": 139.2336339816779,
     "price_change_30d": 278.4348970892472,
-    "score": 0.88,
+    "score": 0.9066666666666666,
     "predicted": true,
     "reason": "Explosion mensual (+100%) | Fuerte tendencia semanal (+10%) | Alta confianza del modelo"
+  },
+  {
+    "name": "SpaceN",
+    "symbol": "sn",
+    "image": "https://coin-images.coingecko.com/coins/images/27576/large/sn.png?1696526609",
+    "chart": "",
+    "market_cap": 91139920,
+    "current_price": 2.2800000000000002,
+    "price_change_24h": -12.23532727174345,
+    "price_change_7d": 43.39737942661318,
+    "price_change_30d": 79.28397871028986,
+    "score": 0.56,
+    "predicted": true,
+    "reason": "Crecimiento mensual sobresaliente (+60%) | Fuerte tendencia semanal (+10%)"
+  },
+  {
+    "name": "HashKey Platform Token",
+    "symbol": "hsk",
+    "image": "https://coin-images.coingecko.com/coins/images/29779/large/HSKlogo.jpg?1719445510",
+    "chart": "",
+    "market_cap": 88824901,
+    "current_price": 0.670424,
+    "price_change_24h": 13.73511725373279,
+    "price_change_7d": 4.523522753306781,
+    "price_change_30d": 127.58243329045,
+    "score": 0.8,
+    "predicted": true,
+    "reason": "Explosion mensual (+100%) | Buena puntuacion en analisis multivariable"
+  },
+  {
+    "name": "Metal Blockchain",
+    "symbol": "metal",
+    "image": "https://coin-images.coingecko.com/coins/images/27222/large/MB-Logo.png?1710514210",
+    "chart": "",
+    "market_cap": 88028637,
+    "current_price": 0.17340799999999998,
+    "price_change_24h": 5.382591059636176,
+    "price_change_7d": 48.70987765015511,
+    "price_change_30d": 66.08180518192947,
+    "score": 0.9333333333333333,
+    "predicted": true,
+    "reason": "Crecimiento mensual sobresaliente (+60%) | Fuerte tendencia semanal (+10%) | Alta confianza del modelo"
   }
 ]
