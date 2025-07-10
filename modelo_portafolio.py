@@ -10,6 +10,7 @@ INPUT_JSON = "criptos_predichas.json"
 # === CARGAR DATOS ===
 def cargar_criptos():
     if not os.path.exists(INPUT_JSON):
+        print(f"No se encontró el archivo: {INPUT_JSON}", file=sys.stderr)
         raise FileNotFoundError(f"No se encontró el archivo: {INPUT_JSON}")
     
     with open(INPUT_JSON, encoding="utf-8") as f:
@@ -20,6 +21,7 @@ def cargar_criptos():
     obligatorias = ["name", "symbol", "current_price", "price_change_24h", "price_change_30d", "score"]
     for col in obligatorias:
         if col not in df.columns:
+            print(f"Falta la columna obligatoria: {col}", file=sys.stderr)
             raise KeyError(f"Falta la columna obligatoria: {col}")
 
     df = df[df["price_change_30d"] < 300]
@@ -31,6 +33,7 @@ def cargar_criptos():
 # === RECOMENDADOR PRINCIPAL ===
 def recomendar_portafolio(capital: float, riesgo: str, plazo: str, top_n: int = 5):
     if capital < 10:
+        print("El capital mínimo debe ser al menos $10", file=sys.stderr)
         raise ValueError("El capital mínimo debe ser al menos $10")
 
     df = cargar_criptos()
@@ -38,16 +41,17 @@ def recomendar_portafolio(capital: float, riesgo: str, plazo: str, top_n: int = 
     # === FILTROS ===
     if riesgo == "leve":
         if plazo == "1a":
-            print(f"[Filtro leve/1a] price_change_30d < 40 y score > 0.4")
+            print(f"[Filtro leve/1a] price_change_30d < 40 y score > 0.4", file=sys.stderr)
             filtro = (df["price_change_30d"] > 0) & (df["price_change_30d"] < 40) & (df["score"] > 0.4)
         else:
-            print(f"[Filtro leve/otros] price_change_30d < 30 y score > 0.5")
+            print(f"[Filtro leve/otros] price_change_30d < 30 y score > 0.5", file=sys.stderr)
             filtro = (df["price_change_30d"] > 0) & (df["price_change_30d"] < 30) & (df["score"] > 0.5)
     elif riesgo == "moderado":
         filtro = (df["price_change_30d"] > -10) & (df["price_change_30d"] < 30) & (df["score"] > 0.35)
     elif riesgo == "volatil":
         filtro = (df["price_change_30d"] > -20) & (df["price_change_30d"] < 50)
     else:
+        print("Riesgo inválido: leve, moderado o volatil", file=sys.stderr)
         raise ValueError("Riesgo inválido: leve, moderado o volatil")
 
     if plazo == "24h":
@@ -63,15 +67,16 @@ def recomendar_portafolio(capital: float, riesgo: str, plazo: str, top_n: int = 
         puntos = 12
         escala = "meses"
     else:
+        print("Plazo inválido: 24h, 30d o 1a", file=sys.stderr)
         raise ValueError("Plazo inválido: 24h, 30d o 1a")
 
     candidatos = df[filtro].copy()
     if candidatos.empty:
-        print("No hay criptomonedas que cumplan los criterios.")
+        print("No hay criptomonedas que cumplan los criterios.", file=sys.stderr)
         return
 
-    print(f"\n[DEBUG] {len(candidatos)} criptos pasaron el filtro ({riesgo})")
-    print(f"Valores de price_change_30d: {candidatos['price_change_30d'].tolist()}")
+    print(f"\n[DEBUG] {len(candidatos)} criptos pasaron el filtro ({riesgo})", file=sys.stderr)
+    print(f"Valores de price_change_30d: {candidatos['price_change_30d'].tolist()}", file=sys.stderr)
 
     candidatos = candidatos.sort_values("score", ascending=False).head(top_n)
     total_score = candidatos["score"].sum()
@@ -81,7 +86,7 @@ def recomendar_portafolio(capital: float, riesgo: str, plazo: str, top_n: int = 
     resumen = []
     x_range = list(range(puntos + 1))
 
-    print(f"\n=== RECOMENDACIÓN DE PORTAFOLIO ({riesgo.upper()}, {plazo.upper()}) ===\n")
+    print(f"\n=== RECOMENDACIÓN DE PORTAFOLIO ({riesgo.upper()}, {plazo.upper()}) ===\n", file=sys.stderr)
 
     for i, (_, row) in enumerate(candidatos.iterrows(), start=1):
         try:
@@ -107,7 +112,7 @@ def recomendar_portafolio(capital: float, riesgo: str, plazo: str, top_n: int = 
 
             proyeccion = [round(c * monto, 2) for c in crecimiento]
         except Exception as e:
-            print(f"Error al procesar {row['symbol']}: {e}")
+            print(f"Error al procesar {row['symbol']}: {e}", file=sys.stderr)
             continue
 
         resumen.append({
@@ -124,21 +129,23 @@ def recomendar_portafolio(capital: float, riesgo: str, plazo: str, top_n: int = 
             "proyeccion": proyeccion
         })
 
-        print(f"Crypto {i}: {row['name']} ({row['symbol'].upper()})")
-        print(f"    Precio actual: ${precio:.4f}")
-        print(f"    Unidades sugeridas: {unidades:.6f}")
-        print(f"    Inversión en USD: ${unidades * precio:.2f}")
-        print(f"    Score: {row['score']:.3f}")
-        print(f"    Motivo: {row.get('reason', '')}")
-        print(f"    Rendimiento anual estimado: {rendimiento_anual * 100:.2f}%\n")
+        print(f"Crypto {i}: {row['name']} ({row['symbol'].upper()})", file=sys.stderr)
+        print(f"    Precio actual: ${precio:.4f}", file=sys.stderr)
+        print(f"    Unidades sugeridas: {unidades:.6f}", file=sys.stderr)
+        print(f"    Inversión en USD: ${unidades * precio:.2f}", file=sys.stderr)
+        print(f"    Score: {row['score']:.3f}", file=sys.stderr)
+        print(f"    Motivo: {row.get('reason', '')}", file=sys.stderr)
+        print(f"    Rendimiento anual estimado: {rendimiento_anual * 100:.2f}%\n", file=sys.stderr)
 
     total_final = 0
-    print("\n[DEBUG] Proyección final por cripto:")
+    print("\n[DEBUG] Proyección final por cripto:", file=sys.stderr)
     for r in resumen:
-        print(f"  {r['symbol']}: {r['proyeccion'][-1]}")
+        print(f"  {r['symbol']}: {r['proyeccion'][-1]}", file=sys.stderr)
         total_final += r['proyeccion'][-1]
-    print(f"[DEBUG] Suma total proyectada: {total_final}")
-    print(json.dumps(resumen, indent=2, ensure_ascii=False))
+    print(f"[DEBUG] Suma total proyectada: {total_final}", file=sys.stderr)
+
+    # SOLO el JSON por stdout
+    print(json.dumps(resumen, ensure_ascii=False))
 
 # === EJECUCIÓN DESDE TERMINAL ===
 if __name__ == "__main__":
@@ -150,8 +157,8 @@ if __name__ == "__main__":
             top_n = int(sys.argv[4]) if len(sys.argv) == 5 else 5
             recomendar_portafolio(capital, riesgo, plazo, top_n)
         except Exception as e:
-            print(f"❌ Error: {e}")
-            print("Uso: python modelo_portafolio.py <capital> <riesgo> <plazo> [top_n]")
+            print(f"❌ Error: {e}", file=sys.stderr)
+            print("Uso: python modelo_portafolio.py <capital> <riesgo> <plazo> [top_n]", file=sys.stderr)
     else:
-        print("Modo de uso:")
-        print("python modelo_portafolio.py 1000 moderado 30d [top_n]")
+        print("Modo de uso:", file=sys.stderr)
+        print("python modelo_portafolio.py 1000 moderado 30d [top_n]", file=sys.stderr)
